@@ -37,6 +37,17 @@ $(document).ready(function() {
 
 	}
 
+	$image.click(function(e){
 
+		// get x/y mouse position over image
+		var x_coord = e.pageX - this.offsetLeft;
+		var y_coord = e.pageY - this.offsetTop;
+		// push new coords into coordinates array
+		coordinates.push((x_coord) + ',' + (y_coord));
+		console.log(coordinates); //sample output of coords
+
+		format_output();
+
+	});
 
 });
