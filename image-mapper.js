@@ -20,7 +20,7 @@ $(document).ready(function() {
 	function format_output(){
 
 		// reference vars
-		var img_src = 'images/img-home.jpg',
+		var img_src = 'images/image.jpg',
 				map_id = 'image_map',
 				href = '"www.google.com"',
 				img_elem = '<img src="'+ img_src +'" usemap="#'+ map_id +'">',
