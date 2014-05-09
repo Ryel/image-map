@@ -23,7 +23,7 @@ $(document).ready(function() {
 		var img_src = 'images/img-home.jpg',
 				map_id = 'image_map',
 				href = '"www.google.com"',
-				img_elem = '<img src="'+ img_src +'" usemap="#'+ map_id +'"',
+				img_elem = '<img src="'+ img_src +'" usemap="#'+ map_id +'">',
 				map_begin = '<map name="'+ map_id +'" id="'+ map_id +'">',
 				map_end ='</map>',
 				map_poly_val = '<area shape="poly" coords="',
