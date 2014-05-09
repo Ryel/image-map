@@ -1,7 +1,41 @@
-<img id="my_image" src="images/img-home.jpg" height="333" width="500">
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>Image-Map</title>
+		<meta name="description" content="image mapper">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 
-<textarea id="textarea" height="300" width="500"></textarea>
+		<link rel="stylesheet" href="style.css">
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script src="image-mapper.js"></script>
 
-<map name="image_map" id="image_map">
-	<area shape="poly" coords="316,238,405,249,426,74,326,65,315,236"href="www.google.com">
-</map>
+
+	</head>
+	<body>
+		<!--[if lt IE 8]>
+		<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+		<![endif]-->
+
+		<h1 id="h1-main">Image Mapper</h1>
+
+		<div class="container">
+
+			<img id="my_image" src="images/image.jpg" height="333" width="500">
+			
+			<textarea id="textarea"></textarea>
+			
+			<!-- Image Using Map -->
+			<img src="images/image.jpg" usemap="#image_map">
+			<!-- Map -->
+			<map name="image_map" id="image_map">
+				<area shape="poly" coords="325,68,313,240,409,249,433,73,328,67"href="www.google.com">
+			</map>
+
+		</div>
+
+
+
+	</body>
+</html>
