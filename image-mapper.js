@@ -5,9 +5,9 @@
 *
 *	<img src="path/to/img.jpg" width="350" height="500" alt="Planets" usemap="#image_map">
 *
-* 	<map name="image_map" id="image_map">
+*	<map name="image_map" id="image_map">
 *			<area shape="poly" coords="90,58,3,118" href="www.google.com" alt="google">
-*		</map>
+*	</map>
 *
 */
 
@@ -65,7 +65,7 @@ $(document).ready(function() {
 		// Full markup output strung together
 		var map_output = img_elem + '\n\n' + map_start + '\n' + map_poly_val + coordinates + end_map_poly_val + 'href=' + href + '>' + '\n' + map_end;
 		
-		return map_output
+		return map_output;
 
 	};
 
