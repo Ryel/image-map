@@ -2,14 +2,14 @@ body {
 	background-color:#F3F3F1;
 }
 .container {
-	width:500px;
+	width:550px;
 	margin:0 auto;
 	background-color:white;
 	padding:10px;
 	border:1px solid #B3B3B3;
 	text-align:center;
 }
-#h1-main {
+h1 {
 	color:#545353;
 	text-align:center;
 	font-family:Georgia,sans-serif;
@@ -18,5 +18,18 @@ body {
 #textarea {
 	height:150px;
 	width:495px;
-	margin:20px 0 20px 0;
+	margin:0 auto;
+	margin-bottom:4px;
+	border:1px solid black;
+}
+#my-image {
+	position:relative;
+	z-index:1;
+}
+#my-canvas {
+	position:absolute;
+	z-index:2;
+}
+#my-canvas:hover {
+	cursor:crosshair;
 }
