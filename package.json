@@ -1,0 +1,19 @@
+{
+  "name": "image-map",
+  "version": "0.0.1",
+  "description": "Prototyping Image Mappers",
+  "main": "image-mapper.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Ryel/image-map.git"
+  },
+  "author": "Christian Flores",
+  "license": "",
+  "bugs": {
+    "url": "https://github.com/Ryel/image-map/issues"
+  },
+  "homepage": "http:ryel.github.io/image-map"
+}
