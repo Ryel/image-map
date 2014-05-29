@@ -24,15 +24,17 @@
 $(document).ready(function() {
 	'use strict';
 
-
+// Cache some variables; others as reference.
 	var $image = $('#my-image'),
 			$canvas = $('#my-canvas'),
 			coordinates	= [],	// All coordinates
 
-			canvas = document.getElementById('my-canvas'),
+			canvas = document.getElementById('my-canvas'), 
 			context = canvas.getContext('2d'),
 
-			click_count = 0;
+			click_count = 0,
+			double_click = false;
+
 
 
 	$canvas.click(function(e){
@@ -56,22 +58,30 @@ $(document).ready(function() {
 
 	});
 
+	/*
+	* This needs to be built out and properly integrated.
+	* When user double clicks, we want to...
+	* - Finish drawing their path by connect begin && end points
+	* - End current canvas path 'closePath();'
+	* - Prepare for potential new path
+	* - And finally begin async embed of IMG data
+	*/
+	
 	canvas.addEventListener('click', function(){
 
-		// Increment click counter by +1
+		// Increment click counter by +1 to register single click.
 		click_count++;
-
+		// Detect click, wait x seconds to see if a second click occurs.
 		if (click_count === 1) {
-			single_click_timer = setTimeout(function(){
+			setTimeout(function(){
 				click_count = 0;
-				return;	
-			}, 400);
+			}, 250);
 		}
-
+		// If second click occurs, register this.
 		else if (click_count === 2) {
-			console.log('Double Click');
 			click_count = 0;
-			return;
+			double_click = true;
+			console.log('double click = ' + double_click);
 		}
 
 	}, false);
@@ -116,17 +126,16 @@ $(document).ready(function() {
 		
 		// Iterate over nodes and begin normalizing them
 		for (var i = 0; i <= coordinates.length; i++) {
-			console.log(current_coord);
-			var current_coord = coordinates[i],
-					// Canvas methods need 2 arguments so we cant pass an array of coords.
-					// So we normalize coords into seperate string 'x' & 'y' and pass them that way.
-					spliced_coord_x = current_coord.split(',')[0],
-					spliced_coord_y = current_coord.split(',')[1];
-
-
-					context.lineTo(spliced_coord_x, spliced_coord_y);
-					
-					context.stroke();
+			var current_coord = coordinates[i];
+				// Canvas methods need 2 arguments so we cant pass an array of coords.
+				// So we normalize coords into seperate string 'x' & 'y' and pass them that way.
+				if (current_coord) {
+					var spliced_coord_x = current_coord.split(',')[0];
+					var spliced_coord_y = current_coord.split(',')[1];
+				}
+				context.lineTo(spliced_coord_x, spliced_coord_y);
+				
+				context.stroke();
 
 		}
 
