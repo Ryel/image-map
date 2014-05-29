@@ -30,18 +30,20 @@ $(document).ready(function() {
 			coordinates	= [],	// All coordinates
 
 			canvas = document.getElementById('my-canvas'),
-			context = canvas.getContext('2d');
+			context = canvas.getContext('2d'),
+
+			click_count = 0;
 
 
 	$canvas.click(function(e){
 
-		// get x/y mouse position over image
+		// Get x/y mouse position over image
 		var x_coord = e.pageX - this.offsetLeft;
 		var y_coord = e.pageY - this.offsetTop;
-		// push new coords into all coordinates array
+		// Push new coords into all coordinates array
 		coordinates.push((x_coord) + ',' + (y_coord));
 
-		console.log(coordinates); //sample output of coords
+		console.log(coordinates); // Sample output of coords
 
 		// Normalize markup and inject it
 		var map_output = format_map_output();
@@ -54,10 +56,30 @@ $(document).ready(function() {
 
 	});
 
+	canvas.addEventListener('click', function(){
+
+		// Increment click counter by +1
+		click_count++;
+
+		if (click_count === 1) {
+			single_click_timer = setTimeout(function(){
+				click_count = 0;
+				return;	
+			}, 400);
+		}
+
+		else if (click_count === 2) {
+			console.log('Double Click');
+			click_count = 0;
+			return;
+		}
+
+	}, false);
+
 
 	function format_map_output() {
 
-		// reference vars to create markup
+		// Reference vars to create markup
 		var img_src = 'images/image.jpg',
 				map_id = 'image-map',
 				href = '"www.google.com"',
@@ -91,10 +113,10 @@ $(document).ready(function() {
 		// Canvas Initialization
 		context.beginPath();
 		context.moveTo(x_coord[0], y_coord[0]);	
-
+		
 		// Iterate over nodes and begin normalizing them
 		for (var i = 0; i <= coordinates.length; i++) {
-
+			console.log(current_coord);
 			var current_coord = coordinates[i],
 					// Canvas methods need 2 arguments so we cant pass an array of coords.
 					// So we normalize coords into seperate string 'x' & 'y' and pass them that way.

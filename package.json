@@ -1,8 +1,8 @@
 {
   "name": "image-map",
   "version": "0.0.1",
-  "description": "Prototyping Image Mappers",
-  "main": "image-mapper.js",
+  "description": "Image Mapping Prototype",
+  "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,10 +10,15 @@
     "type": "git",
     "url": "git://github.com/Ryel/image-map.git"
   },
+  "keywords": [
+    "image",
+    "map",
+    "hotspot"
+  ],
   "author": "Christian Flores",
-  "license": "",
+  "license": "ISC",
   "bugs": {
     "url": "https://github.com/Ryel/image-map/issues"
   },
-  "homepage": "http:ryel.github.io/image-map"
+  "homepage": "http://ryel.github.io/image-map"
 }
