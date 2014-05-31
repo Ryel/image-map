@@ -33,3 +33,20 @@ h1 {
 #my-canvas:hover {
 	cursor:crosshair;
 }
+/*
+This is a bunch of weird vendor prefixed stuff
+to stop image highlighting on double click
+*/
+#my-image {
+  -webkit-tap-highlight-color:transparent;
+  -moz-tap-highlight-color:transparent;
+	-webkit-user-select: none; /* Chrome/Safari */        
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* IE10+ */
+	/* Rules below not implemented in browsers yet */
+	-o-user-select: none;
+	user-select: none;
+}
+
+
+

@@ -36,7 +36,7 @@ $(document).ready(function() {
 			double_click = false;
 
 
-
+	// Primary click handler.
 	$canvas.click(function(e){
 
 		// Get x/y mouse position over image
@@ -46,7 +46,6 @@ $(document).ready(function() {
 		coordinates.push((x_coord) + ',' + (y_coord));
 
 		console.log(coordinates); // Sample output of coords
-
 		// Normalize markup and inject it
 		var map_output = format_map_output();
 		var canvas_output = format_canvas_output();
@@ -54,6 +53,15 @@ $(document).ready(function() {
 		$('textarea').val(canvas_output + '\n\n' +  map_output);
 
 		draw_canvas(x_coord, y_coord);
+
+
+	});
+
+	// Double Click handler
+	$canvas.dblclick(function(event) {
+		double_click = true;
+		context.closePath();
+		coordinates = [];
 
 
 	});
@@ -67,24 +75,27 @@ $(document).ready(function() {
 	* - And finally begin async embed of IMG data
 	*/
 	
-	canvas.addEventListener('click', function(){
+	/*
+		*	canvas.addEventListener('click', function(){
+		*		// Increment click counter by +1 to register single click.
+		* 	click_count++;
+		*		// Detect click, wait x seconds to see if a second click occurs.
+		* 	if (click_count === 1) {
+		* 		setTimeout(function(){
+		* 			click_count = 0;
+		* 		}, 250);
+		* 	}
+		*		// If second click occurs, register this.
+		* 	else if (click_count === 2) {
+		* 		double_click = true;
+		* 		click_count = 0;
+		* 		console.log('double click = ' + double_click);
+		* 		context.closePath();
+		* 		return double_click;
+		* 	}
 
-		// Increment click counter by +1 to register single click.
-		click_count++;
-		// Detect click, wait x seconds to see if a second click occurs.
-		if (click_count === 1) {
-			setTimeout(function(){
-				click_count = 0;
-			}, 250);
-		}
-		// If second click occurs, register this.
-		else if (click_count === 2) {
-			click_count = 0;
-			double_click = true;
-			console.log('double click = ' + double_click);
-		}
-
-	}, false);
+		* }, false);
+	*/
 
 
 	function format_map_output() {
@@ -120,6 +131,8 @@ $(document).ready(function() {
 
 	function draw_canvas(x_coord, y_coord){
 		
+		var spliced_coord_x;
+		var spliced_coord_y;
 		// Canvas Initialization
 		context.beginPath();
 		context.moveTo(x_coord[0], y_coord[0]);	
@@ -130,11 +143,12 @@ $(document).ready(function() {
 				// Canvas methods need 2 arguments so we cant pass an array of coords.
 				// So we normalize coords into seperate string 'x' & 'y' and pass them that way.
 				if (current_coord) {
-					var spliced_coord_x = current_coord.split(',')[0];
-					var spliced_coord_y = current_coord.split(',')[1];
+					spliced_coord_x = current_coord.split(',')[0];
+					spliced_coord_y = current_coord.split(',')[1];
 				}
 				context.lineTo(spliced_coord_x, spliced_coord_y);
-				
+
+				context.strokeStyle = "#0000ff";
 				context.stroke();
 
 		}
