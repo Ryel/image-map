@@ -2,15 +2,15 @@
 
 Playing around with various ways to achieve the same image-mapping tool.
 
-To get started creating a hotspot, visit the url http://christianryel.com/image-map and click the top image.  Click again at another point over the image to begin forming your polygonal shape.  Double click on the location where you would like to finish your new shape.  After you've double clicked and the hotspot(polygon) has been closed, we will ask you for your method of input (link, resource, etc).  In the textarea below you can see your sample markup for hotspot and attached canvas.
+Initialize hotspot by clicking anywhere on the image.  Click on another location over the image to initialize your second coordinate and begin drawing a path connecting them.  When you are done with your polygonal shape you can double click to finish path and begin a new one.
+
 
 ###TODO
 
-- Keep cleaning/modularizing
-- ~~ Multiple paths ~~
-- ~~ Stroke Paths (draw line) ~~
+- ~~Multiple paths~~
+- ~~Stroke Paths (draw line)~~
 - Customizable paths (line color)
 - Separate arrays of new paths (store them individually)
-- Begin implementing input feature
-- Work on designing input UI
+- ~~Begin implementing input feature~~
+- ~~Work on designing input UI~~
 - Lift site off static GH Pages and onto Heroku or something

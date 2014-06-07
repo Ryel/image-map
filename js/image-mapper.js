@@ -27,6 +27,9 @@ $(document).ready(function() {
 // Cache some variables; others as reference.
 	var $image = $('#my-image'),
 			$canvas = $('#my-canvas'),
+			$hotspot_input = $('.hotspot-input'),
+			$hotspot_input_field = $('input#hotspot'),
+			
 			coordinates	= [],	// All coordinates
 
 			canvas = document.getElementById('my-canvas'), 
@@ -45,7 +48,8 @@ $(document).ready(function() {
 		// Push new coords into all coordinates array
 		coordinates.push((x_coord) + ',' + (y_coord));
 
-		console.log(coordinates); // Sample output of coords
+		// console.log(coordinates); // Sample output of coords
+
 		// Normalize markup and inject it
 		var map_output = format_map_output();
 		var canvas_output = format_canvas_output();
@@ -57,12 +61,27 @@ $(document).ready(function() {
 
 	});
 
-	// Double Click handler
+	/* 
+	* Double Click handler
+	* Double click event signals end of current hotspot. 
+	* Action: Register dbl click, end path, begin new path.
+	*/
+
 	$canvas.dblclick(function(event) {
+
+		// set true so we can handle this later
 		double_click = true;
+		// end current canvas path
 		context.closePath();
+
+		console.log(coordinates); // for reference
+
+		// clear coordinates array to start new one
 		coordinates = [];
 
+		console.log('double_click = ' + double_click); // for reference
+
+		return double_click; // exit event handler and return true
 
 	});
 
@@ -154,6 +173,34 @@ $(document).ready(function() {
 		}
 
 	}
+
+	/*
+	* Start of UI effects
+	* Keeping UI seperate until I have time to properly integrate
+	*/
+
+	$canvas.dblclick(function(event) {
+		// reset input value to blank, display it, focus it.
+		$hotspot_input_field.val('');
+		$hotspot_input.fadeIn(100);
+		$hotspot_input_field.focus();
+
+	});
+
+	// submit and hide form when user presses enter (e.which = enter)
+	$hotspot_input.keypress(function (e) {
+
+  	if (e.which == 13) {
+  		
+    	$hotspot_input.submit();
+			$hotspot_input.css({display:"hidden"});
+
+    	return false;
+
+  	}
+
+	});
+
 
 
 });
