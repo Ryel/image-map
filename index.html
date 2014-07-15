@@ -14,7 +14,7 @@
 		<h1 id="h1-main">Image Mapper</h1>
 
 		<div class="container"> 
-		<h3>Click on image to sample output ↴</h3>
+		<h3>Upload image and start clicking it ↴</h3>
 
 
 		<div class="map-container">
@@ -28,8 +28,9 @@
 			<canvas id="my-canvas" height="350" width="500"></canvas>
 
 			<!-- Image Markup -->
-			<img id="my-image" src="image.jpg" height="350" width="500">
-
+			<!-- 			<img id="my-image" src="image.jpg" height="350" width="500"> -->
+			<img id="my-image" height="350" width="500">
+			<input type="file" id="user-img" />
 		</div>
 
 			<!-- Text area displaying image map output -->
@@ -48,6 +49,6 @@
 		</div>
 
 
-
+	<script src="js/image-upload.js"></script>
 	</body>
 </html>
