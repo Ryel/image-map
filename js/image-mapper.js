@@ -30,7 +30,7 @@ $(document).ready(function() {
 			$hotspot_input = $('.hotspot-input'),
 			$hotspot_input_field = $('input#hotspot'),
 			
-			coordinates	= [],	// All coordinates
+			coordinates	= {},	// All coordinates
 
 			canvas = document.getElementById('my-canvas'), 
 			context = canvas.getContext('2d'),
@@ -78,7 +78,7 @@ $(document).ready(function() {
 		
 		// clear coordinates array to start new one
 		coordinates = [];
-		console.log("coordinates prototype = " + coordinates);
+		
 		console.log('double_click = ' + double_click); // for reference
 
 		return double_click; // exit event handler and return true
