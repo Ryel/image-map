@@ -7,16 +7,13 @@ Initialize hotspot by clicking anywhere on the image.  Click on another location
 ### Environment Support
 
 - IE 8/9
-- Support for IE6 is in the roadmap.  Our bottleneck for this is HTML Canvas.
-- iOS (Video/Image)
-- Android (Image Only)
-- Blackberry/All other current devices (Image Only)
-- Hybrid/Non-Native (Video/Image/GIF/Browser Plugin)
+- Partial support down to IE6
+- All common devices
+- All media except iOS video
 
 
 ###TODO
 
-- Customizable paths (line color)
 - Update data-model for embed (object -> array(x))
 - Better UI
 - Work on embedding
@@ -45,23 +42,15 @@ The high-level actions are as follows...
 
 Begin Hotspot -> Create Points -> Finish Hotspot -> Add Data -> Send to DB -> Embed -> Cleanup, Finish, Update UI
 
-Coordinates are stored in this object
+Current coordinates are stored in the `coordinates` array.
 
 `coordinates`
 
-Each set of coordinates(hotspot) are stored as a named array inside of the coordinates object.  They can be accessed like this...
-
-`coordinates.coordinate_1`
-
-And of course you're free to do things like...
-
-`coordinates.coordinate_1[0]`
-
-`coordinates.coordinate_1.length`
+Each set of coordinates(hotspot) are stored as an array inside of the `hotspot_coordinates` array.
 
 ### Contributing
 
-Not accepting contributions currently but if you're interested in this project and want to talk about it, reach out to me through email and I'll get you up-to-speed and we can also talk about when I'll be ready to start taking pull requests.
+I am not accepting contributions currently on this repo but if you're interested in the project and want to talk about it, reach out to me through email.
 
 
 ### Questions, Comments, Concerns?

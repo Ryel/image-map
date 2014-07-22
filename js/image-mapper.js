@@ -17,21 +17,20 @@
 *	Canvas Output / Required Markup
 *
 *	<canvas id="my-canvas" height="350" width="500"></canvas>
-*
 */
 
+var hotspot_coordinates = [];
 
 $(document).ready(function() {
 	'use strict';
 
-	// Cache some variables; others as reference.
 	var $image = $('#my-image'),
 			$canvas = $('#my-canvas'),
 			$hotspot_input = $('.hotspot-input'),
 			$hotspot_input_field = $('input#hotspot'),
-			
-			coordinates	= {},	// All coordinates
 
+			coordinates = [],
+			
 			canvas = document.getElementById('my-canvas'), 
 			context = canvas.getContext('2d'),
 
@@ -77,6 +76,10 @@ $(document).ready(function() {
 		console.log(coordinates); // for reference
 		
 		// clear coordinates array to start new one
+		
+		hotspot_coordinates.push(coordinates);
+
+		console.log(hotspot_coordinates);
 		coordinates = [];
 		
 		console.log('double_click = ' + double_click); // for reference
@@ -85,10 +88,9 @@ $(document).ready(function() {
 
 	});
 
-	
+	// TODO: Either find a cleaner way to do this, or start implementing dynamic user images.
 	function format_map_output() {
 
-		// Reference vars to create markup
 		var img_src = 'images/image.jpg',
 				map_id = 'image-map',
 				href = '"www.google.com"',
@@ -173,3 +175,6 @@ $(document).ready(function() {
 
 
 });
+
+
+

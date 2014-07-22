@@ -4,11 +4,9 @@
 		<meta charset="utf-8">
 		<title>Image-Map</title>
 		<link rel="stylesheet" href="css/style.css">
-		<script src="js/jquery.min.js"></script>
-		<script src="js/image-mapper.js"></script>
-
-
+		<link rel="stylesheet" href="css/hotspot-style.css">
 	</head>
+
 	<body>
 
 		<h1 id="h1-main">Image Mapper</h1>
@@ -21,23 +19,22 @@
 			<!-- Hidden input field -->
 			<!-- Activated on double-click -->
 			<div class="hotspot-input">
-				<input id="hotspot"></input>
+				<input id="hotspot" placeholder="Enter URL here..." ></input>
 			</div>
 
 			<!-- Canvas Markup -->
 			<canvas id="my-canvas" height="350" width="500"></canvas>
 
 			<!-- Image Markup -->
-			<!-- 			<img id="my-image" src="image.jpg" height="350" width="500"> -->
 			<img id="my-image" height="350" width="500">
-			<input type="file" id="user-img" />
+			<input type="file" id="user-img">
 		</div>
 
 			<!-- Text area displaying image map output -->
 			<textarea id="textarea"></textarea>
 
 			<!-- Image Using Map -->
-			<img src="image.jpg" usemap="#image-map">
+			<img src="https://cloud.githubusercontent.com/assets/4242005/3607738/8aa10dd4-0d4f-11e4-89c6-bb8c8e85c052.jpg" usemap="#image-map">
 
 			<!-- Image Map Markup -->
 			<map name="image-map" id="image-map">
@@ -48,7 +45,10 @@
 
 		</div>
 
+		<script src="js/jquery.min.js"></script>
+		<script src="js/image-mapper.js"></script>
+		<script src="js/image-upload.js"></script>
 
-	<script src="js/image-upload.js"></script>
 	</body>
+
 </html>
