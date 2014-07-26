@@ -3,22 +3,23 @@
 */
 
 
-
 (function(){
 	
-	var userImg = document.getElementById( "user-img" );
-	var imgContainer = document.getElementById( "my-image" );
+	var user_upload = document.getElementById( "user-upload" );
+	var user_img = document.getElementById( "user-image" );
+	var user_img_copy = document.getElementById("user-image-2");
 	
 
 	putImg = function() {
-		imgContainer.src = window.localStorage.getItem( "image-base64" );
+		user_img.src = window.localStorage.getItem( "image-base64" );
+		user_img_copy.src = window.localStorage.getItem( "image-base64" );
 	},
 
 	/* Listener */
 
 	bindUi = function(){
 
-		userImg.addEventListener( "change", function(){
+		user_upload.addEventListener( "change", function(){
 
 		if ( this.files.length ) {
 

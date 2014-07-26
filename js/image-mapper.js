@@ -24,17 +24,16 @@ var hotspot_coordinates = [];
 $(document).ready(function() {
 	'use strict';
 
-	var $image = $('#my-image'),
-			$canvas = $('#my-canvas'),
+	var $canvas = $('#my-canvas'),
 			$hotspot_input = $('.hotspot-input'),
+			$hotspot_title_field = $('#hotspot-title'),
 			$hotspot_input_field = $('input#hotspot'),
 
 			coordinates = [],
 			
 			canvas = document.getElementById('my-canvas'), 
-			context = canvas.getContext('2d'),
+			ctx = canvas.getContext('2d'),
 
-			click_count = 0,
 			double_click = false;
 
 
@@ -66,25 +65,27 @@ $(document).ready(function() {
 	* Action: Register dbl click, end path, begin new path.
 	*/
 
-	$canvas.dblclick(function(event) {
+	$canvas.dblclick(function() {
 
 		double_click = true;
 
-		// end current canvas path
-		context.closePath();
+		ctx.closePath();	// end current canvas path
 
-		console.log(coordinates); // for reference
+		console.log(coordinates);
 		
-		// clear coordinates array to start new one
-		
-		hotspot_coordinates.push(coordinates);
+		hotspot_coordinates.push(coordinates); // add coords to final collection
+
+		getMapObject();  // Find map object in DOM and append html for new map
 
 		console.log(hotspot_coordinates);
-		coordinates = [];
-		
-		console.log('double_click = ' + double_click); // for reference
 
-		return double_click; // exit event handler and return true
+		handle_input_ui();
+
+		coordinates = []; // new current coordinates array
+		
+		console.log('double_click = ' + double_click);
+
+		return double_click;
 
 	});
 
@@ -124,8 +125,8 @@ $(document).ready(function() {
 		var spliced_coord_x;
 		var spliced_coord_y;
 		// Canvas Initialization
-		context.beginPath();
-		context.moveTo(x_coord[0], y_coord[0]);	
+		ctx.beginPath();
+		ctx.moveTo(x_coord[0], y_coord[0]);	
 		
 		// Iterate over nodes and begin normalizing them
 		for (var i = 0; i <= coordinates.length; i++) {
@@ -136,27 +137,36 @@ $(document).ready(function() {
 					spliced_coord_x = current_coord.split(',')[0];
 					spliced_coord_y = current_coord.split(',')[1];
 				}
-				context.lineTo(spliced_coord_x, spliced_coord_y);
+				ctx.lineTo(spliced_coord_x, spliced_coord_y);
 
-				context.strokeStyle = "#0000ff";
-				context.stroke();
-
+				ctx.lineWidth = 2;
+				ctx.strokeStyle = "rgba(85,150,238,0.3)";
+				ctx.stroke();
 		}
 
+	}
+
+	/*
+	*
+	* Markup/DOM interactions
+	*
+	*/
+
+	function getMapObject(){
+		var obj = document.getElementById('image-map');
+		obj.innerHTML = '<area shape="poly" coords="' + coordinates + '"' + 'href="www.google.com"></map>';
 	}
 
 	/*
 	* Starts UI related stuff
 	*/
 
-	// url input UI
-	$canvas.dblclick(function(event) {
+	function handle_input_ui(){
 		// reset input value to blank, display it, focus it.
 		$hotspot_input_field.val('');
 		$hotspot_input.fadeIn(100);
 		$hotspot_input_field.focus();
-
-	});
+	}
 
 	// submit and hide form when user presses enter (e.which = enter)
 	$hotspot_input.keypress(function (e) {
@@ -165,6 +175,12 @@ $(document).ready(function() {
   		
     	$hotspot_input.submit();
 			$hotspot_input.css({display:"hidden"});
+
+			var hotspot_title = document.getElementById('hotspot-title').value;
+			var hotspot_url = document.getElementById('hotspot-url').value;
+
+			console.log(hotspot_title);
+			console.log(hotspot_url);
 
     	return false;
 

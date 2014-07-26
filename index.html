@@ -14,32 +14,33 @@
 		<div class="container"> 
 		<h3>Upload image and start clicking it ↴</h3>
 
+		<!-- User upload image -->
+		<input type="file" id="user-upload">
 
 		<div class="map-container">
-			<!-- Hidden input field -->
-			<!-- Activated on double-click -->
+			<!-- **HIDDEN** Show on double-click -->
 			<div class="hotspot-input">
-				<input id="hotspot" placeholder="Enter URL here..." ></input>
+				<input id="hotspot-title" placeholder="Title" ></input>
+				<input id="hotspot-url" placeholder="URL" ></input>
 			</div>
 
 			<!-- Canvas Markup -->
 			<canvas id="my-canvas" height="350" width="500"></canvas>
 
 			<!-- Image Markup -->
-			<img id="my-image" height="350" width="500">
-			<input type="file" id="user-img">
+			<img id="user-image" height="350" width="500">
 		</div>
 
 			<!-- Text area displaying image map output -->
 			<textarea id="textarea"></textarea>
 
-			<!-- Image Using Map -->
-			<img src="https://cloud.githubusercontent.com/assets/4242005/3607738/8aa10dd4-0d4f-11e4-89c6-bb8c8e85c052.jpg" usemap="#image-map">
-
 			<!-- Image Map Markup -->
+			<!-- ** This map gets updated with shape markup ** -->
 			<map name="image-map" id="image-map">
-				<area shape="poly" coords="325,67,315,239,401,257,419,241,434,76,426,67,330,63"href="">
+				
 			</map>
+
+			<img id="user-image-2" height="350" width="500" usemap="#image-map">
 
 			<h3>⇪ Hover over camera to view hotspot ⇪</h3>
 
